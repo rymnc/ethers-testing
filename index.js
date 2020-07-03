@@ -55,7 +55,7 @@ const tx = {
 }
 
 //Sending the transaction, note that the transaction returns
-//all details of txn, including hash, v,r,s etc.
+//all details of txn, including hash, v,r,s etc/
 const transactionProm = wallet.sendTransaction(tx)
 transactionProm.then((txhash)=>{
     console.log(txhash)
