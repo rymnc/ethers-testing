@@ -2,10 +2,10 @@ const { ethers } = require('ethers')
 const { wallet } = require('./wallet')
 
 //Getting the abi from the /bin directory
-const { abi }    = require('./bin/test.json')
+const { abi }    = require('../bin/test.json')
 
 //Getting the bytecode from /bin/test.json
-const { bytecode } = require('./bin/test.json')
+const { bytecode } = require('../bin/test.json')
 
 //Creating a Factory, to initialise contracts from
 const contractFactory = new ethers.ContractFactory(abi,bytecode,wallet)
