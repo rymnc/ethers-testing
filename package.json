@@ -1,12 +1,13 @@
 {
-  "name": "y",
+  "name": "ethers-app",
   "version": "1.0.0",
   "description": "Testing ethers.js",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./scripts/index",
     "tx": "node ./scripts/transaction",
-    "contract":"node ./scripts/contract.js"
+    "contract":"node ./scripts/contract.js",
+    "listener":"node ./scripts/eventListeners.js"
   },
   "repository": {
     "type": "git",
