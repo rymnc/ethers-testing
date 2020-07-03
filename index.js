@@ -44,6 +44,21 @@ gasPriceProm.then((gas)=>{
     console.log("Gas Price:",ethers.utils.formatUnits(gas))
 })
 
+//Get the latest block number
+const blockNumberProm = provider.getBlockNumber()
+blockNumberProm.then((num)=>{
+    console.log('Block Number:',num)
+})
+
+//Get the latest Block Details
+const blockProm = provider.getBlock('latest')
+blockProm.then((data)=>{
+    console.log("Block Number:",data.number)
+    console.log(data)
+})
+
+
+
 //Setting amount of transaction to 0.1 ether
 const amount = ethers.utils.parseEther('0.1')
 
@@ -57,7 +72,21 @@ const tx = {
 //Sending the transaction, note that the transaction returns
 //all details of txn, including hash, v,r,s etc/
 const transactionProm = wallet.sendTransaction(tx)
-transactionProm.then((txhash)=>{
-    console.log(txhash)
+transactionProm.then((txdata)=>{
+    console.log("Transaction Details:",txdata)
 })
+
+//Get transaction receipt of random transaction
+const transactionReceiptProm = provider.getTransactionReceipt("0xa4ddad980075786c204b45ab8193e543aec4411bd94894abef47dc90d4d3cc01")
+transactionReceiptProm.then((res)=>{
+    console.log("Receipt of Random Tx:",res)
+})
+
+//ENS resolver
+const resolverProm = provider.resolveName("registrar.firefly.eth")
+
+resolverProm.then(function(address) {
+    console.log("Address of registrar.firefly.eth: " + address);
+});
+
 
