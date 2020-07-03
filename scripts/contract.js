@@ -36,6 +36,8 @@ const interactions = async () =>{
     //Listening for Event - coinIncremented from contract
     //The parameters are in the same order as the contract
     //The final param , event, comes with the transaction data
+    //In this case, because only I want to listen to only 1 event, I have used .once
+    //To listen to multiple events, use .on instead of .once
     contract.once("countIncremented",(count,sender,event)=>{
         console.log("Count was incremented by :",sender," Count is now:",ethers.utils.formatEther(count)*(1e18))
     })
