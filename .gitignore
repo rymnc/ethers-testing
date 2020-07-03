@@ -1,2 +1,5 @@
 node_modules/
 .env
+bin/test.bin
+bin/test.abi
+bin/test-solc-output.json

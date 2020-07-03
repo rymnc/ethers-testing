@@ -1,0 +1,33 @@
+const { ethers } = require('ethers')
+const { wallet } = require('./wallet')
+
+//Getting the abi from the /bin directory
+const { abi }    = require('./bin/test.json')
+
+//Getting the bytecode from /bin/test.json
+const { bytecode } = require('./bin/test.json')
+
+//Creating a Factory, to initialise contracts from
+const contractFactory = new ethers.ContractFactory(abi,bytecode,wallet)
+
+//Contract interactions are better called as async/await functions 
+const interactions = async () =>{
+    //Deploying the factory to the wallet provided network, using abi, and bytecode(data of tx)
+    let contract = await contractFactory.deploy();
+    console.log("Waiting for contract deploy to get included in the block.....")
+    //Contract interactions
+    //Calling the current count value
+    let count = await contract.getCount()
+    console.log("Count before increment:",ethers.utils.formatEther(count)*(1e18))
+
+    console.log("Sending Increment Transaction...")
+    //Incrementing the count value
+    let incCountProm = await contract.incrementCount();
+
+    //We must wait till the transaction gets included in the block to check for state change
+    console.log("Waiting for increment transaction to be included in the block")
+    await incCountProm.wait()
+    let newcount = await contract.getCount();
+    console.log("Count After Increment:",ethers.utils.formatEther(newcount)*(1e18))
+}
+interactions()

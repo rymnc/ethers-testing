@@ -7,4 +7,6 @@ Testing ethers.js
 
 # Run
 1. `npm run dev` : Starts nodemon, so you can make changes to code otf
+2. `npm run tx`  : Runs a sample transaction
+3. `npm run contract` : Compiles and deploys test.sol, as well as runs its functions
 

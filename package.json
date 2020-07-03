@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index",
-    "tx": "node transaction"
+    "tx": "node transaction",
+    "contract":"node contract.js"
   },
   "repository": {
     "type": "git",
